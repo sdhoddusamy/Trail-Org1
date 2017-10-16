@@ -1,0 +1,6 @@
+<aura:component >
+    <c:helloHeading />
+	<p>Hello World!</p>	
+    <c:helloPlayground />
+    <c:helloMessageInteractive message="Passed Text" />
+</aura:component>

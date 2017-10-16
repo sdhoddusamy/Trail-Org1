@@ -1,0 +1,25 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    
+    <force:recordData aura:id="recordLoader"
+        recordId="{!v.recordId}"
+        fields="Name,Description,Phone,Industry"
+        targetFields="{!v.contactRecord}"
+        targetError="{!v.recordLoadError}"
+    />
+
+    
+    <ui:outputText value="Contact"/>
+    <br/>
+    Name: <ui:outputText value="{!v.contactRecord.Name}"/>
+    <br/>
+    Description: <ui:outputTextArea value="{!v.contactRecord.Description}"/>
+    <br/>
+    Phone: <ui:outputPhone value="{!v.contactRecord.Phone}" />
+    <br/>
+    Industry: <ui:outputText value="{!v.contactRecord.Industry}" />
+                      
+</aura:component>

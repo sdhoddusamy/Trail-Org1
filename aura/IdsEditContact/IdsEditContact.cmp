@@ -1,0 +1,32 @@
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome">
+
+    <aura:attribute name="contactRecord" type="Object"/>
+    <aura:attribute name="recordSaveError" type="String" default=""/>
+
+    
+    <force:recordData aura:id="recordLoader"
+        recordId="{!v.recordId}"
+        fields="Name,Description,Phone,Industry"
+        targetFields="{!v.contactRecord}"
+        targetError="{!v.recordSaveError}"
+        mode="EDIT" 
+        recordUpdated="{!c.handleRecordUpdated}" />
+
+    
+    <ui:outputText value="Edit Contact"/>
+    <br/>
+    <lightning:input label="Contact Name" value="{!v.contactRecord.Name}"/>
+    <br/>
+    <lightning:input label="Contact Description" value="{!v.contactRecord.Description}"/>
+    <br/>
+    <lightning:input label="Contact Phone" value="{!v.contactRecord.Phone}"/>
+    <br/>
+    <ui:button label="Save Contact" press="{!c.saveContact}" />
+    
+    // Display error message
+    <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+        <br />
+        Error: <ui:outputText value="{!v.recordSaveError}"/>
+    </aura:if>
+                      
+</aura:component>
